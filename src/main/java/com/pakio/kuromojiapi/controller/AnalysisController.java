@@ -18,6 +18,6 @@ public class AnalysisController {
   public AnalysisResponse getAnalysisResult(@RequestParam("text") String text) {
     Map<Integer, String> surfaces = kuromojiService.parseWithKuromoji(text);
 
-    return new AnalysisResponse(surfaces);
+    return new AnalysisResponse(surfaces, text);
   }
 }
