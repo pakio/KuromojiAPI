@@ -2,6 +2,7 @@ package com.pakio.kuromojiapi.controller;
 
 import com.pakio.kuromojiapi.response.AnalysisResponse;
 import com.pakio.kuromojiapi.service.KuromojiService;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,11 +16,8 @@ public class AnalysisController {
 
   @RequestMapping(value="/analysis")
   public AnalysisResponse getAnalysisResult(@RequestParam("text") String text) {
-    kuromojiService.parseWithKuromoji(text)
-        .stream()
-        .map(e -> e.getSurface()+ " "+ e.getAllFeatures())
-        .forEach(System.out::println);
+    Map<Integer, String> surfaces = kuromojiService.parseWithKuromoji(text);
 
-    return new AnalysisResponse(text);
+    return new AnalysisResponse(surfaces);
   }
 }
