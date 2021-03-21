@@ -10,12 +10,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value="/api")
+@RequestMapping(value = "/api")
 public class AnalysisController {
-  @Autowired
-  KuromojiService kuromojiService;
+  @Autowired KuromojiService kuromojiService;
 
-  @RequestMapping(value="/analysis")
+  @RequestMapping(value = "/analysis")
   public AnalysisResponse getAnalysisResult(
       @RequestParam("text") String text,
       @RequestParam(value = "mode", required = false, defaultValue = "normal") String mode) {
