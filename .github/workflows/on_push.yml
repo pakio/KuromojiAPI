@@ -1,0 +1,15 @@
+name: Test
+
+on: [push, pull_request]
+jobs:
+  test-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Check out actions
+        uses: actions/checkout@v2
+        with:
+          repository: pakio/googlejavaformat-action
+          path: ./.github/actions/google-java-format
+      - name: Run my action
+        uses: ./.github/actions/google-java-format
